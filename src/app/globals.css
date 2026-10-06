@@ -1,0 +1,760 @@
+@import "tailwindcss";
+
+@custom-variant light (&:where(.light, .light *));
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-brand-primario: #C1F429;
+  --color-brand-secundario: #FF6D6D;
+  --color-brand-terciario: #18FFC8;
+  --color-brand-cuaternario: #7B61FF;
+  
+  --color-superficie-base: #FAFAFA;
+  --color-superficie-elevado: #FFFFFF;
+  --color-superficie-overlay: #F1F1F3;
+  --color-superficie-sutil: #E8E8EC;
+  
+  --font-display: var(--font-outfit), "Outfit", sans-serif;
+  --font-sans: var(--font-inter), "Inter", sans-serif;
+  --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  
+  --animate-shimmer: shimmer 2s linear infinite;
+  --animate-pulso-glow: pulso-glow 3s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-scan: scan 3s linear infinite;
+  
+  @keyframes shimmer {
+    from { transform: translateX(-40%); }
+    to { transform: translateX(40%); }
+  }
+  @keyframes pulso-glow {
+    0%, 100% { opacity: 1; filter: brightness(1); }
+    50% { opacity: 0.8; filter: brightness(1.2); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+  @keyframes scan {
+    0%, 100% { top: 0%; }
+    50% { top: 100%; }
+  }
+}
+
+/* ===========================
+   DESIGN SYSTEM — ZENITH EXCELLENCE
+   RUNOVA · Light-first (réplica GymCRM Pro)
+   =========================== */
+
+:root,
+.light {
+  /* Zenith Accent Palette — idéntica a GymCRM */
+  --brand-primario:    #C1F429;
+  --brand-secundario:  #FF6D6D;
+  --brand-terciario:   #18FFC8;
+  --brand-cuaternario: #7B61FF;
+
+  /* Light surfaces */
+  --bg-base:           #FAFAFA;
+  --bg-elevado:        #FFFFFF;
+  --bg-overlay:        #F1F1F3;
+  --bg-sutil:          #E8E8EC;
+  --bg-card:           rgba(255, 255, 255, 0.92);
+
+  --borde-default:     rgba(0, 0, 0, 0.06);
+  --borde-fuerte:      rgba(0, 0, 0, 0.10);
+  --borde-acento:      rgba(193, 244, 41, 0.45);
+  --borde-cristal:     rgba(0, 0, 0, 0.08);
+
+  --texto-primario:    #0A0A0B;
+  --texto-secundario:  #4B4B52;
+  --texto-terciario:   #94949E;
+  --texto-muted:       #A1A1AA;
+  --texto-invertido:   #030303;
+
+  --exito:             #00E676;
+  --advertencia:       #FFAB00;
+  --peligro:           #FF1744;
+  --info:              #2979FF;
+
+  --sombra-umbra:      0 1px 2px rgba(0, 0, 0, 0.04);
+  --sombra-penumbra:   0 8px 24px rgba(0, 0, 0, 0.06);
+  --sombra-ambient:    0 16px 40px rgba(0, 0, 0, 0.08);
+  --sombra-premium:    0 24px 48px -12px rgba(0, 0, 0, 0.12);
+  --glow-soft:         0 0 24px rgba(193, 244, 41, 0.12);
+  --glow-intense:      0 0 40px rgba(193, 244, 41, 0.2);
+
+  --radio-xs:    4px;
+  --radio-sm:    8px;
+  --radio-md:    12px;
+  --radio-lg:    14px;
+  --radio-xl:    16px;
+  --radio-full:  9999px;
+
+  --fuente-display: var(--font-outfit), 'Outfit', sans-serif;
+  --fuente-cuerpo:  var(--font-inter), 'Inter', sans-serif;
+  --fuente-mono:    var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
+
+  --transicion-ultra: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  --transicion-swift: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Aliases RUNOVA → Zenith (compat componentes existentes) */
+  --volt:              var(--brand-primario);
+  --cyan:              var(--brand-terciario);
+  --coral:             var(--brand-secundario);
+  --purple:            var(--brand-cuaternario);
+  --bg:                var(--bg-base);
+  --surface-1:         var(--bg-elevado);
+  --surface-2:         var(--bg-overlay);
+  --surface-3:         var(--bg-sutil);
+  --navbar-h:          80px;
+  --sidebar-w:         280px;
+  --sidebar-collapsed: 80px;
+  --content-max:       1600px;
+}
+
+.dark {
+  --bg-base:           #030303;
+  --bg-elevado:        #080808;
+  --bg-overlay:        #0F0F0F;
+  --bg-sutil:          #161616;
+  --bg-card:           rgba(8, 8, 8, 0.6);
+
+  --borde-default:     rgba(255, 255, 255, 0.04);
+  --borde-fuerte:      rgba(255, 255, 255, 0.1);
+  --borde-acento:      rgba(212, 255, 0, 0.2);
+  --borde-cristal:     rgba(255, 255, 255, 0.06);
+
+  --texto-primario:    #FFFFFF;
+  --texto-secundario:  #94949E;
+  --texto-terciario:   #52525B;
+  --texto-muted:       #3F3F46;
+  --texto-invertido:   #030303;
+
+  --sombra-umbra:      0 2px 4px rgba(0, 0, 0, 0.4);
+  --sombra-penumbra:   0 12px 24px rgba(0, 0, 0, 0.5);
+  --sombra-ambient:    0 24px 48px rgba(0, 0, 0, 0.6);
+  --sombra-premium:    0 30px 60px -12px rgba(0, 0, 0, 0.7);
+  --glow-soft:         0 0 30px rgba(193, 244, 41, 0.08);
+  --glow-intense:      0 0 50px rgba(193, 244, 41, 0.12);
+
+  --bg:                var(--bg-base);
+  --surface-1:         var(--bg-elevado);
+  --surface-2:         var(--bg-overlay);
+  --surface-3:         var(--bg-sutil);
+}
+
+/* ===========================
+   RESET & BASE ENHANCEMENTS
+   =========================== */
+
+html {
+  background-color: var(--bg-base);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: transparent;
+  color: var(--texto-primario);
+  font-family: var(--fuente-cuerpo);
+  font-size: 15px;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+/* Zenith Mesh — degradado neutro (sin acentos de marca) */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(165deg, #F7F7F8 0%, #F0F1F3 42%, #E9EBEE 100%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.dark body::before {
+  background:
+    linear-gradient(165deg, #0A0A0B 0%, #111113 50%, #0C0C0E 100%);
+}
+
+/* Noise sutil */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.025;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+.dark body::after { opacity: 0.06; }
+
+.rv-sidebar {
+  /* sidebar fijo: no se mueve al hacer scroll del main */
+}
+
+.rv-sidebar-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--bg-sutil) transparent;
+}
+.rv-sidebar-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+.rv-sidebar-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.rv-sidebar-scroll::-webkit-scrollbar-thumb {
+  background: var(--bg-sutil);
+  border-radius: 10px;
+}
+.rv-sidebar-scroll::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--brand-primario) 50%, var(--bg-sutil));
+}
+
+@media (max-height: 720px) {
+  .rv-sidebar-scroll {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  .rv-sidebar-scroll button {
+    padding-top: 0.55rem;
+    padding-bottom: 0.55rem;
+  }
+}
+
+/* Atmosphere desactivada — fondo neutro */
+.rv-atmosphere { display: none; }
+.rv-atmosphere__blob { display: none; }
+
+/* ===========================
+   iOS / SAFARI / PWA FIXES
+   =========================== */
+
+/* Scroll suave nativo en iOS (momentum scrolling) */
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Eliminar highlight azul al tocar elementos en iOS */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Evitar text-size-adjust en rotación de pantalla en iOS — ver regla html arriba */
+
+/* Safe area — soporte para notch y Dynamic Island en iPhone */
+.safe-area-top    { padding-top:    env(safe-area-inset-top, 0px); }
+.safe-area-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+.safe-area-left   { padding-left:   env(safe-area-inset-left, 0px); }
+.safe-area-right  { padding-right:  env(safe-area-inset-right, 0px); }
+
+/* Evitar que inputs en iOS hagan zoom automático (font-size mínimo 16px) */
+input,
+textarea,
+select {
+  font-size: max(16px, 1em);
+}
+
+/* Evitar que botones en iOS tengan estilos nativos no deseados */
+button,
+[role="button"] {
+  -webkit-appearance: none;
+  touch-action: manipulation;
+}
+
+/* Compatibilidad con backdrop-filter en Safari */
+.backdrop-blur-xl {
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+}
+.backdrop-blur-2xl {
+  -webkit-backdrop-filter: blur(40px);
+  backdrop-filter: blur(40px);
+}
+.backdrop-blur-3xl {
+  -webkit-backdrop-filter: blur(64px);
+  backdrop-filter: blur(64px);
+}
+
+
+/* ===========================
+   ZENITH UI COMPONENTS
+   =========================== */
+
+@utility zenith-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--borde-cristal);
+  border-radius: var(--radio-lg);
+  box-shadow: var(--sombra-penumbra);
+  transition: var(--transicion-ultra);
+  position: relative;
+  overflow: hidden;
+}
+
+@utility tarjeta-glass {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--borde-cristal);
+  border-radius: var(--radio-lg);
+  box-shadow: var(--sombra-penumbra);
+  transition: var(--transicion-ultra);
+  position: relative;
+  overflow: hidden;
+}
+
+.zenith-card::before, .tarjeta-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.zenith-card:hover, .tarjeta-glass:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: var(--borde-acento);
+  box-shadow: var(--sombra-premium), var(--glow-soft);
+}
+
+/* Premium Buttons */
+@utility btn-zenith {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 14px 28px;
+  background: var(--brand-primario);
+  color: #000;
+  font-weight: 700;
+  font-family: var(--fuente-display);
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: var(--radio-md);
+  transition: var(--transicion-ultra);
+  box-shadow: 0 4px 20px rgba(193, 244, 41, 0.2);
+  border: none;
+  cursor: pointer;
+}
+
+.btn-zenith:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(193, 244, 41, 0.4), var(--glow-intense);
+  filter: brightness(1.1);
+}
+
+.btn-zenith:active {
+  transform: translateY(1px);
+}
+
+@utility btn-zenith-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--texto-primario);
+  font-weight: 700;
+  font-family: var(--fuente-display);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: var(--radio-md);
+  border: 1px solid var(--borde-cristal);
+  transition: var(--transicion-swift);
+  cursor: pointer;
+}
+
+.btn-zenith-outline:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--brand-primario);
+  color: var(--brand-primario);
+  box-shadow: var(--glow-soft);
+}
+
+@utility btn-zenith-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px 24px;
+  background: var(--bg-sutil);
+  color: var(--texto-primario);
+  font-weight: 700;
+  font-family: var(--fuente-display);
+  font-size: 14px;
+  text-transform: uppercase;
+  border-radius: var(--radio-md);
+  transition: var(--transicion-swift);
+  border: 1px solid var(--borde-default);
+}
+
+.btn-zenith-secondary:hover {
+  background: var(--bg-overlay);
+  border-color: var(--brand-terciario);
+  color: var(--brand-terciario);
+}
+
+@utility btn-zenith-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px 24px;
+  background: rgba(255, 23, 68, 0.1);
+  color: #FF1744;
+  font-weight: 700;
+  font-family: var(--fuente-display);
+  font-size: 14px;
+  text-transform: uppercase;
+  border-radius: var(--radio-md);
+  border: 1px solid rgba(255, 23, 68, 0.2);
+  transition: var(--transicion-swift);
+}
+
+.btn-zenith-danger:hover {
+  background: rgba(255, 23, 68, 0.2);
+  border-color: #FF1744;
+  box-shadow: 0 0 20px rgba(255, 23, 68, 0.2);
+}
+
+/* UI Standard Aliases — Instant Upgrade */
+.btn-primario { @apply btn-zenith; }
+.btn-secundario { @apply btn-zenith-secondary; }
+.btn-danger { @apply btn-zenith-danger; }
+.btn-premium { @apply btn-zenith; }
+.input-base { @apply input-zenith; }
+
+@utility badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: var(--radio-full);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid currentColor;
+}
+
+@utility tarjeta {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--borde-cristal);
+  border-radius: var(--radio-lg);
+  box-shadow: var(--sombra-penumbra);
+  transition: var(--transicion-swift);
+}
+
+.tarjeta:hover, .tarjeta-glass:hover {
+  border-color: var(--borde-acento);
+  box-shadow: var(--sombra-premium), var(--glow-soft);
+  transform: translateY(-2px);
+}
+
+/* Glass Inputs */
+@utility input-zenith {
+  width: 100%;
+  padding: 14px 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--borde-fuerte);
+  border-radius: var(--radio-md);
+  color: var(--texto-primario);
+  font-family: var(--fuente-cuerpo);
+  transition: var(--transicion-swift);
+  outline: none;
+}
+
+.input-zenith:focus {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--brand-primario);
+  box-shadow: 0 0 0 4px rgba(193, 244, 41, 0.05);
+}
+
+/* ===========================
+   STATS & METRICS
+   =========================== */
+
+.metric-zenith {
+  padding: 32px;
+  border-radius: var(--radio-xl);
+  background: linear-gradient(145deg, var(--bg-elevado), var(--bg-base));
+  border: 1px solid var(--borde-cristal);
+  position: relative;
+}
+
+.metric-zenith::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--brand-primario), transparent);
+  opacity: 0.3;
+}
+
+.metric-value-zenith {
+  font-family: var(--fuente-display);
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--texto-primario);
+  background: none;
+  -webkit-text-fill-color: unset;
+}
+
+.light .btn-zenith-outline,
+:root .btn-zenith-outline {
+  background: var(--bg-overlay);
+  border-color: var(--borde-fuerte);
+}
+
+.light .input-zenith,
+:root .input-zenith {
+  background: var(--bg-overlay);
+  border-color: var(--borde-fuerte);
+}
+
+/* ===========================
+   ANIMATIONS & UTILS
+   =========================== */
+
+.reveal-up {
+  animation: reveal-up 0.8s var(--transicion-ultra) both;
+}
+
+.hover-glow:hover {
+  text-shadow: 0 0 20px var(--brand-primario);
+}
+
+.border-glow {
+  border: 1px solid var(--brand-primario);
+  box-shadow: 0 0 20px rgba(193, 244, 41, 0.15);
+}
+
+/* Badge Zenith */
+.badge-zenith {
+  padding: 4px 12px;
+  border-radius: var(--radio-full);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: 1px solid currentColor;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Scrollbar Zenith */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-sutil);
+  border-radius: 10px;
+  border: 2px solid var(--bg-base);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-primario);
+}
+
+/* Typo Overrides */
+.title-zenith {
+  font-family: var(--fuente-display);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(40px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ============================================================
+   RESPONSIVE MODALS & FORMS OVERLAYS
+   ============================================================ */
+.fixed.inset-0 > div:not(.absolute),
+.fixed.inset-0 > form:not(.absolute) {
+  max-height: calc(100vh - 2rem) !important;
+  overflow-y: auto !important;
+  scrollbar-width: thin;
+}
+
+/* Light-mode selects & date pickers */
+select, option {
+  background-color: var(--bg-elevado) !important;
+  color: var(--texto-primario) !important;
+}
+
+input[type="date"],
+input[type="time"] {
+  color-scheme: light !important;
+}
+
+.dark input[type="date"],
+.dark input[type="time"] {
+  color-scheme: dark !important;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: none;
+  opacity: 0.55;
+}
+
+.dark input[type="date"]::-webkit-calendar-picker-indicator,
+.dark input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+/* ============================================================
+   LIGHT REMAPS — hardcodes dark → light Zenith
+   ============================================================ */
+
+html.light .text-white,
+html:not(.dark) .text-white { color: var(--texto-primario) !important; }
+
+html.light [class*="text-white\/"],
+html:not(.dark) [class*="text-white\/"] { color: var(--texto-secundario) !important; }
+
+/* Backdrop de modales — siempre oscuro (no remapear) */
+.rv-backdrop {
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+.dark .rv-backdrop {
+  background: rgba(0, 0, 0, 0.8) !important;
+}
+
+html.light [class*="bg-black"]:not(.rv-backdrop),
+html:not(.dark) [class*="bg-black"]:not(.rv-backdrop) {
+  background-color: var(--bg-overlay) !important;
+}
+
+html.light [class*="bg-white\/\[0.02\]"],
+html.light [class*="bg-white\/\[0.03\]"],
+html.light [class*="bg-white\/\[0.04\]"],
+html.light [class*="bg-white\/\[0.05\]"],
+html.light [class*="bg-white\/\[0.06\]"],
+html:not(.dark) [class*="bg-white\/\[0.02\]"],
+html:not(.dark) [class*="bg-white\/\[0.03\]"],
+html:not(.dark) [class*="bg-white\/\[0.04\]"],
+html:not(.dark) [class*="bg-white\/\[0.05\]"],
+html:not(.dark) [class*="bg-white\/\[0.06\]"] {
+  background-color: rgba(0, 0, 0, 0.03) !important;
+}
+
+html.light [class*="border-white\/"],
+html:not(.dark) [class*="border-white\/"] {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+html.light [class*="bg-\[#0"],
+html.light [class*="bg-\[#1"],
+html.light [class*="bg-\[#030"],
+html.light [class*="bg-\[#080"],
+html:not(.dark) [class*="bg-\[#0A"],
+html:not(.dark) [class*="bg-\[#080"],
+html:not(.dark) [class*="bg-\[#030"] {
+  background-color: var(--bg-elevado) !important;
+}
+
+html.light [class*="text-\[#C1F429\]"],
+html:not(.dark) [class*="text-\[#C1F429\]"],
+html.light [class*="text-\[#CCFF00\]"],
+html:not(.dark) [class*="text-\[#CCFF00\]"] {
+  color: #6B8A00 !important;
+}
+
+html.light .btn-zenith,
+html:not(.dark) .btn-zenith {
+  background: #C1F429 !important;
+  color: #000 !important;
+}
+
+/* Tipografía helpers */
+.font-display { font-family: var(--fuente-display) !important; }
+.font-body    { font-family: var(--fuente-cuerpo) !important; }
+.font-mono    { font-family: var(--fuente-mono) !important; font-variant-numeric: tabular-nums; }
+
+.rv-page {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding: 1.5rem 1rem 2.5rem;
+}
+@media (min-width: 640px) { .rv-page { padding: 1.5rem 1.5rem; } }
+@media (min-width: 1024px) { .rv-page { padding: 2.5rem 2.5rem; } }
+
+.rv-page-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.rv-page-title {
+  font-family: var(--fuente-display);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  color: var(--texto-primario);
+}
+
+.rv-page-subtitle {
+  font-size: 13px;
+  color: var(--texto-secundario);
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+.rv-data {
+  font-family: var(--fuente-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.rv-caption {
+  font-size: 10px;
+  font-weight: 800;
+  font-family: var(--fuente-display);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--texto-terciario);
+}
+
+.btn-zenith-primary { @apply btn-zenith; }
+
+:focus-visible {
+  outline: 2px solid var(--brand-primario);
+  outline-offset: 3px;
+  border-radius: var(--radio-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
